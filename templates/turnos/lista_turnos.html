@@ -1,0 +1,43 @@
+<!-- Si el usuario es cliente -->
+{% if user.is_cliente %}
+    <h2>🗓️ Mis Turnos Agendados</h2>
+
+    {% if turnos_cliente %}
+        <div class="turnos-grid">
+            {% for turno in turnos_cliente %}
+                <div class="turno-card">
+                    <h3>{{ turno.servicio.tipo_servicio }}</h3>
+                    <p><strong>Empleado:</strong> {{ turno.empleado.user.get_full_name }}</p>
+                    <p><strong>Fecha:</strong> {{ turno.fecha|date:"d/m/Y" }}</p>
+                    <p><strong>Hora:</strong> {{ turno.hora|time:"H:i" }}</p>
+                    <p><strong>Observaciones:</strong> {{ turno.observaciones|default:"-" }}</p>
+                    <a href="{% url 'detalle_turno' turno.id %}" class="btn-ver-detalles">Ver detalles</a>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="sin-turnos">No has agendado ningún turno aún.</p>
+    {% endif %}
+{% endif %}
+
+<!-- Si el usuario es empleado -->
+{% if user.is_empleado %}
+    <h2>📋 Turnos Asignados a Mí</h2>
+
+    {% if turnos_empleado %}
+        <div class="turnos-grid">
+            {% for turno in turnos_empleado %}
+                <div class="turno-card">
+                    <h3>{{ turno.servicio.tipo_servicio }}</h3>
+                    <p><strong>Cliente:</strong> {{ turno.cliente.user.get_full_name }}</p>
+                    <p><strong>Fecha:</strong> {{ turno.fecha|date:"d/m/Y" }}</p>
+                    <p><strong>Hora:</strong> {{ turno.hora|time:"H:i" }}</p>
+                    <p><strong>Observaciones:</strong> {{ turno.observaciones|default:"-" }}</p>
+                    <a href="{% url 'detalle_turno' turno.id %}" class="btn-ver-detalles">Ver detalles</a>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="sin-turnos">No hay turnos asignados aún.</p>
+    {% endif %}
+{% endif %}

@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="stylesheet" href="{% static 'css/estilo.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}">
+</head>
+<header class="header">
+<div class="logo">
+        <a href="{% url 'home' %}">
+            <img src="{% static 'images/logo.png' %}" alt="Peluquería Martita" class="logo-img">
+        </a>
+    </div>
+    <nav class="nav-menu">
+        <ul>
+            <li><a href="{% url 'home' %}">Inicio</a></li>
+
+
+            <li><a href="{% url 'home' %}#servicios">Servicios</a></li>
+            <li><a href="{% url 'home' %}#contacto">Contacto</a></li>
+
+
+            {% if user.is_authenticated %}  <!-- si el usuario esta autenticado-->
+                <li><a href="{% url 'datos_personales' %}">{{ user.get_full_name }}</a></li>  <!-- muestra el nombre del usuario autenticado-->
+                <li><a href="{% url 'logout' %}">Salir</a></li>
+                
+            {% else %}
+            <li><a href="{% url 'login' %}">Iniciar Sesión</a></li>
+            <li><a href="{% url 'register' %}">Registrarme</a></li>
+
+            {% endif %}
+        </ul>
+    </nav>
+</header>

@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mi Perfil</title>
+    <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}">
+    <link rel="stylesheet" href="{% static 'css/perfil.css' %}"> <!-- perfil -->
+</head>
+<body>
+    {% include 'includes/navbar.html' %}
+
+    <div class="perfil-container">
+        <!-- Columna izquierda: Datos personales -->
+        <section class="datos-personales">
+            <h1>👤 Datos Personales</h1>
+
+            <p><strong>Nombre completo:</strong> {{ user.nombre }} {{ user.apellido }}</p>
+            <p><strong>Correo electrónico:</strong> {{ user.email }}</p>
+
+            {% if user.is_cliente and user.cliente %}
+                <h2>Información del Cliente</h2>
+                <p><strong>DNI:</strong> {{ user.cliente.dni }}</p>
+                <p><strong>Fecha de nacimiento:</strong> {{ user.cliente.fecha_nacimiento }}</p>
+                <p><strong>Teléfono:</strong> {{ user.cliente.telefono }}</p>
+                <p><strong>Domicilio:</strong> {{ user.cliente.domicilio }}</p>
+                <p><strong>Edad:</strong> {{ user.cliente.edad }}</p>
+
+            {% elif user.is_empleado and user.empleado %}
+                <h2>Información del Empleado</h2>
+                <p><strong>DNI:</strong> {{ user.empleado.dni }}</p>
+                <p><strong>Fecha de nacimiento:</strong> {{ user.empleado.fecha_nacimiento }}</p>
+                <p><strong>Teléfono:</strong> {{ user.empleado.telefono }}</p>
+                <p><strong>Domicilio:</strong> {{ user.empleado.domicilio }}</p>
+                <p><strong>Puestos:</strong>
+                    {% for servicio in user.empleado.puestos.all %}
+                        {{ servicio.tipo_servicio }}{% if not forloop.last %}, {% endif %}
+                    {% empty %}
+                        No tiene servicios asignados.
+                    {% endfor %}
+                </p>
+                <p><strong>Edad:</strong> {{ user.empleado.edad }}</p>
+
+            {% else %}
+                <p>No hay información adicional disponible para este usuario.</p>
+            {% endif %}
+
+            <a href="{% url 'editar_datos' %}" class="btn-editar">✏️ Editar Datos</a>
+        </section>
+
+        <!-- Columna derecha: Lista de turnos -->
+        <section class="turnos-container">
+            {% include 'turnos/lista_turnos.html' %}
+        </section>
+    </div>
+
+    {% include 'includes/footer.html' %}
+</body>
+</html>

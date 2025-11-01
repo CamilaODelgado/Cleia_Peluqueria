@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/detalle_turno.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}">
+</head>
+<body>
+    {% include 'includes/navbar.html' %}
+<div class="perfil-page">
+    <div class="container">
+        <h1>Detalles del Turno</h1>
+
+
+
+            <p><strong>Cliente:</strong> {{ turno.cliente.user.get_full_name }}</p>
+            <p><strong>Empleado:</strong> {{ turno.empleado.user.get_full_name }}</p>
+            <p><strong>Servicio:</strong> {{ turno.servicio.tipo_servicio }}</p>
+            <p><strong>Fecha:</strong> {{ turno.fecha|date:"d/m/Y" }}</p>
+            <p><strong>Hora:</strong> {{ turno.hora|time:"H:i" }}</p>
+            <p><strong>Observaciones:</strong> {{ turno.observaciones|default:"-" }}</p>
+
+            <a href="{% url 'datos_personales' %}">Volver a la lista de turnos</a>
+
+    </div>
+</div>
+        {% include 'includes/footer.html' %}
+
+</body>
+</html>

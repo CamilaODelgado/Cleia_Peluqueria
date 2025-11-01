@@ -1,0 +1,128 @@
+/* --- ÁREA AISLADA DEL PERFIL --- */
+.perfil-page {
+    background-color: #f4f6f8;
+    font-family: 'Poppins', sans-serif;
+    color: #2c3e50;
+    padding: 60px 20px;
+    min-height: calc(100vh - 200px);
+}
+
+/* --- CONTENEDOR PRINCIPAL --- */
+.perfil-page .container {
+    max-width: 700px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 40px 50px;
+    border-radius: 18px;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+    border-top: 6px solid #e67e22;
+}
+
+/* --- TITULO --- */
+.perfil-page h1 {
+    font-size: 2em;
+    color: #2c3e50;
+    text-align: center;
+    border-bottom: 3px solid #e67e22;
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+}
+
+/* --- FORMULARIO --- */
+.perfil-page form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.perfil-page form p {
+    display: flex;
+    flex-direction: column;
+}
+
+.perfil-page form label {
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.perfil-page form input,
+.perfil-page form select,
+.perfil-page form textarea {
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.perfil-page form input:focus,
+.perfil-page form select:focus,
+.perfil-page form textarea:focus {
+    border-color: #e67e22;
+    box-shadow: 0 0 6px rgba(230, 126, 34, 0.3);
+    outline: none;
+}
+
+/* --- CONTENEDOR DE BOTONES --- */
+.perfil-page .form-buttons {
+    display: flex;
+    justify-content: flex-start; /* o center si querés centrarlos */
+    gap: 15px; /* espacio entre botones */
+    margin-top: 20px;
+}
+
+/* --- CONTENEDOR DE BOTONES --- */
+.perfil-page .form-buttons {
+    display: flex;
+    justify-content: flex-start; /* cambia a center si querés centrarlos */
+    gap: 15px; /* espacio entre botones */
+    margin-top: 20px;
+}
+
+/* --- BOTONES COMPACTOS --- */
+.perfil-page .btn-success,
+.perfil-page .btn-secondary {
+    padding: 10px 18px; /* tamaño compacto */
+    font-size: 0.95em;
+    border-radius: 10px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* --- BOTÓN GUARDAR (VERDE) --- */
+.perfil-page .btn-success {
+    background: linear-gradient(135deg, #27ae60, #2ecc71);
+    color: #fff;
+    
+}
+
+.perfil-page .btn-success:hover {
+    background: linear-gradient(135deg, #219150, #27ae60);
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 6px 15px rgba(39, 174, 96, 0.4);
+}
+
+/* --- BOTÓN CANCELAR (ROJO) --- */
+.perfil-page .btn-secondary {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    color: #fff;
+    
+}
+
+.perfil-page .btn-secondary:hover {
+    background: linear-gradient(135deg, #c0392b, #e74c3c);
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 6px 15px rgba(231, 76, 60, 0.4);
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 600px) {
+    .perfil-page .container {
+        padding: 25px;
+    }
+    .perfil-page h1 {
+        font-size: 1.7em;
+    }
+}

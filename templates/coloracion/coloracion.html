@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+    <link rel="stylesheet" href="{% static 'css/cortes.css' %}"> 
+<head>
+    <meta charset="UTF-8">
+    <title>Colorantes</title>
+    <link rel="stylesheet" >
+</head>
+<body>
+    {% include 'includes/navbar.html' %}
+    <header>
+        <h1>Coloración</h1>
+        <p>
+            El corte de pelo es la base de tu estilo. Es la técnica que da forma, volumen y carácter a tu cabello, definiendo tu imagen.
+        </p>
+    </header>
+
+    <section class="galeria">
+        <div class="card">
+            <img src="{% static 'images/permanente.jpg' %}" alt="permanente">
+            <h3>Permanente</h3>
+            <p>Puede referirse a algo que es constante o que dura mucho tiempo, o a un tratamiento, ondula o riza el cabello de forma duradera</p>
+        </div>
+
+        <div class="card">
+            <img src="{% static 'images/Demimpermanente.png' %}" alt="Demimpermanente">
+            <h3>Demimpermanente</h3>
+            <p>Es un tinte para el cabello que deposita color en la superficie y en las capas más externas de la cutícula sin alterar su estructura, utilizando un revelador de bajo volumen y sin amoníaco.</p>
+        </div>
+
+        <div class="card">
+            <img src="{% static 'images/semipermanente.jpg' %}" alt="semipermanente">
+            <h3>Semipermanente</h3>
+            <p>Dura entre 4 y 8 semanas. Deposita pigmentos en la capa externa sin modificar la estructura del cabello.</p>
+        </div>
+        <div class="card">
+            <img src="{% static 'images/Sombré.jpg' %}" alt="Sombré">
+            <h3>Sombré</h3>
+            <p> La transición de color entre la raíz y las puntas es mucho más gradual, ofreciendo un efecto menos contrastado.</p>
+        </div>
+        <div class="card">
+            <img src="{% static 'images/Color Melting.jpg' %}" alt="corte cortina">
+            <h3>Color Melting</h3>
+            <p>Técnica donde se aplican varios tonos y se difuminan cuidadosamente donde se encuentran. El objetivo es que la transición entre colores sea imperceptible y suave, como si el color se hubiera derretido.</p>
+        </div>
+    </section>
+    
+    {% include 'includes/footer.html' %}
+</body>
+</html>

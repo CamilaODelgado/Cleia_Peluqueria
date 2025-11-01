@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+    <link rel="stylesheet" href="{% static 'css/cortes.css' %}"> 
+<head>
+    <meta charset="UTF-8">
+    <title>Tratamiento</title>
+
+</head>
+<body>
+    {% include 'includes/navbar.html' %}
+    <header>
+        <h1>Cortes</h1>
+        <p>
+            El corte de pelo es la base de tu estilo. Es la técnica que da forma, volumen y carácter a tu cabello, definiendo tu imagen.
+        </p>
+    </header>
+
+    <section class="galeria">
+        <div class="card">
+            <img src="{% static 'images/hidratacion.jpg' %}" alt="Hidratación">
+            <h3>Hidratación</h3>
+            <p>Repone el agua perdida en el cabello. Aporta suavidad, ligereza y elasticidad.</p>
+        </div>
+
+        <div class="card">
+            <img src="{% static 'images/nutricion.jpg' %}" alt="Nutrición">
+            <h3>Nutrición</h3>
+            <p>Repone los lípidos (grasas y aceites naturales). Sella la cutícula y reduce el encrespamiento</p>
+        </div>
+
+        <div class="card">
+            <img src="{% static 'images/reconstruccion.jpg' %}" alt="Reconstrucción">
+            <h3>Reconstrucción</h3>
+            <p>Repone las proteínas y aminoácidos. Repara la estructura interna de la hebra capilar, aportando resistencia y fuerza.</p>
+        </div>
+        <div class="card">
+            <img src="{% static 'images/sellado.jpg' %}" alt="Sellado de Cutícula">
+            <h3>Sellado de Cutícula</h3>
+            <p>Media melena que cae justo sobre la clavícula o un poco más arriba. Versátil y elegante.</p>
+        </div>
+        <div class="card">
+            <img src="{% static 'images/proteinas.jpg' %}" alt="Tratamiento de Proteínas">
+            <h3>Tratamiento de Proteínas</h3>
+            <p>Recomendado para cabello extremadamente dañado y quebradizo. Restaura la resistencia y reduce la rotura de manera intensa.	Concentrados altos de Queratina, Colágeno, o Péptidos.</p>
+        </div>
+    </section>
+
+    {% include 'includes/footer.html' %}
+</body>
+</html>

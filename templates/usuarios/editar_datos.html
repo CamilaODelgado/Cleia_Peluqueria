@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Datos</title>
+    <link rel="stylesheet" href="{% static 'css/editar_datos.css' %}">
+</head>
+<body>
+    {% include 'includes/navbar.html' %}
+<div class="perfil-page">
+    <div class="container">
+        <h1>Editar Datos Personales</h1>
+
+        <form method="POST">
+            {% csrf_token %}
+            {{ user_form.as_p }}
+            {{ perfil_form.as_p }}
+
+            <div class="form-buttons">
+                <button type="submit" class="btn btn-success" name="guardar">💾 Guardar</button>
+                <button type="submit" class="btn btn-secondary" name="cancelar">❌ Cancelar</button>
+            </div>
+        </form>
+    </div>
+
+</div>
+    {% include 'includes/footer.html' %}
+</body>
+</html>

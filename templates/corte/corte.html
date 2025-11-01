@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Cortes</title>
+    <link rel="stylesheet" href="{% static 'css/cortes.css' %}">
+</head>
+<body>
+    {% include 'includes/navbar.html' %}
+
+    <!-- Header -->
+    <header>
+        <h1>Cortes</h1>
+        <p>
+            El corte de pelo es la base de tu estilo. Es la técnica que da forma, volumen y carácter a tu cabello, definiendo tu imagen.
+        </p>
+    </header>
+
+    <!-- Galería de cortes -->
+    <section class="galeria">
+        <div class="card">
+            <img src="{% static 'images/corte capas.jpg' %}" alt="corte en capas">
+            <h3>A Capas (Layered)</h3>
+            <p>Técnica de crear distintas longitudes en el cabello para añadir movimiento, volumen o aligerar peso.</p>
+            <button class="btn-reservar">Reservar Turno</button>
+        </div>
+
+        <div class="card">
+            <img src="{% static 'images/lob.jpg' %}" alt="corte lob">
+            <h3>Bob / Lob</h3>
+            <p>Melena recta que va de la altura de la mandíbula (Bob) a la clavícula (Lob o Long Bob). Aporta estructura y volumen.</p>
+            <button class="btn-reservar">Reservar Turno</button>
+        </div>
+
+        <div class="card">
+            <img src="{% static 'images/pixie.jpg' %}" alt="corte pixie">
+            <h3>Pixie</h3>
+            <p>Muy corto, con capas que dejan el cuello y las orejas al descubierto. Puede llevar un flequillo largo o muy corto.</p>
+            <button class="btn-reservar">Reservar Turno</button>
+        </div>
+
+        <div class="card">
+            <img src="{% static 'images/clavicut.jpg' %}" alt="corte clavicut">
+            <h3>Clavicut</h3>
+            <p>Media melena que cae justo sobre la clavícula o un poco más arriba. Versátil y elegante.</p>
+            <button class="btn-reservar">Reservar Turno</button>
+        </div>
+
+        <div class="card">
+            <img src="{% static 'images/cortina.jpg' %}" alt="corte cortina">
+            <h3>Flequillo Cortina</h3>
+            <p>Se abre en el centro de la frente y cae enmarcando los pómulos. Combina con casi todos los largos.</p>
+            <button class="btn-reservar">Reservar Turno</button>
+        </div>
+    </section>
+
+{% include 'includes/footer.html' %}
+</body>
+</html>

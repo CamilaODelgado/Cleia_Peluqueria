@@ -1,0 +1,44 @@
+
+<!---Para poder anclarlo con el views.py:
+
+Usar {{ form.as_p }} 
+
+Agregar % csrf_token % para proteger el formulario.
+
+Mostrar mensajes de éxito o error con % if messages %.-->
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+    <link rel="stylesheet" href="{% static 'css/registro.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrarme</title>
+</head>
+<body>
+
+    <div class="register-container">
+        <h2>Crear una Cuenta</h2>
+        
+        <form method="POST">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="input-group">
+                    {{ field.label_tag }}
+                    {{ field }}
+                    {% if field.errors %}
+                        <div style="color:red;">{{ field.errors }}</div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            <button type="submit">Registrarme</button>
+
+            <div class="login-link">
+            ¿Ya tienes una cuenta? <a href="{% url 'login' %}">Inicia Sesión</a>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>

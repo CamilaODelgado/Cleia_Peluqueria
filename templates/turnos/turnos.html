@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Turnos</title>
+    <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}">
+    <link rel="stylesheet" href="{% static 'css/turnos.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="form-container">
+        <h2><i class="fa-duotone fa-solid fa-scissors fa-bounce"></i> Agregar turnos</h2>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label>Nombre:</label>
+                <input type="text" name="nombre" value="{{ nombre }}" {% if usuario_logeado %}required{% endif %}>
+            </div>
+
+            <div class="form-group">
+                <label>Apellido:</label>
+                <input type="text" name="apellido" value="{{ apellido }}" {% if usuario_logeado %}required{% endif %}>
+            </div>
+
+            <div class="form-group">
+                <label>Email:</label>
+                <input type="email" name="email" value="{{ email }}" {% if usuario_logeado %}required{% endif %}>
+            </div>
+
+            <div class="form-group">
+                <label>Teléfono:</label>
+                <input type="text" name="telefono" value="{{ telefono }}">
+            </div>
+
+            <div class="form-group">
+                <label>Servicio:</label>
+                <select name="servicio" onchange="this.form.submit()" {% if usuario_logeado %}required{% endif %}>
+                    <option value="">---------</option>
+                    {% for s in servicios %}
+                        <option value="{{ s.id }}" {% if servicio_seleccionado and s.id == servicio_seleccionado.id %}selected{% endif %}>
+                            {{ s.tipo_servicio }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Empleado:</label>
+                <select name="empleado" {% if usuario_logeado %}required{% endif %}>
+                    <option value="">---------</option>
+                    {% if servicio_seleccionado %}
+                        {% for e in empleados %}
+                            <option value="{{ e.id }}" {% if empleado_seleccionado and e.id == empleado_seleccionado.id %}selected{% endif %}>
+                                {{ e.user.get_full_name }}
+                            </option>
+                        {% endfor %}
+                    {% else %}
+                        {% for e in empleados %}
+                            <option value="{{ e.id }}">{{ e.user.get_full_name }}</option>
+                        {% endfor %}
+                    {% endif %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Fecha y hora:</label>
+                <input type="datetime-local" name="fecha_hora" {% if usuario_logeado %}required{% endif %}>
+            </div>
+
+            <div class="form-group">
+                <label>Observaciones:</label>
+                <textarea name="observaciones">{{ observaciones|default:'' }}</textarea>
+            </div>
+
+            <div class="button-group">
+                <button type="submit" name="guardar" class="btn btn-primary">Guardar</button>
+                <button type="button" class="btn btn-secondary" onclick='window.location.href="{% url "home" %}"'>Cancelar</button>
+            </div>
+        </form>
+
+    </div>
+</body>
+</html>
