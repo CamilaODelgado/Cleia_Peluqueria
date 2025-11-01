@@ -55,7 +55,7 @@ def agregar_turno(request):
     if request.method == 'POST':
 
         if 'servicio' in request.POST and 'guardar' not in request.POST:
-            # ✅ Recuperar los datos ya escritos antes de recargar
+            # Recuperar los datos ya escritos antes de recargar
             nombre = request.POST.get('nombre', '').strip()
             apellido = request.POST.get('apellido', '').strip()
             email = request.POST.get('email', '').strip()
@@ -72,7 +72,7 @@ def agregar_turno(request):
                 except Servicios.DoesNotExist:
                     servicio_seleccionado = None
 
-            # ✅ Si ya había un empleado elegido, mantenerlo seleccionado
+            # Si ya había un empleado elegido, mantenerlo seleccionado
             if empleado_id:
                 try:
                     empleado_seleccionado = Empleado.objects.get(id=empleado_id)
